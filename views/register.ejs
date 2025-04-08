@@ -1,0 +1,15 @@
+<%- include('header') %>
+<h2>Register</h2>
+<form method="POST" action="/register">
+  <input name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <select name="role" required>
+    <option value="customer">Customer</option>
+    <option value="manager">Manager</option>
+    <option value="admin">Admin</option>
+  </select>
+  <button type="submit">Register</button>
+</form>
+<p style="color:red;"><%= error %></p>
+<p><a href="/login">Already have an account? Login here.</a></p>
+<%- include('footer') %>

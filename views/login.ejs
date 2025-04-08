@@ -1,0 +1,10 @@
+<%- include('header') %>
+<h2>Login</h2>
+<form method="POST" action="/login">
+  <input name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <button type="submit">Login</button>
+</form>
+<p style="color:red;"><%= error %></p>
+<p><a href="/register">Don't have an account? Register here.</a></p>
+<%- include('footer') %>

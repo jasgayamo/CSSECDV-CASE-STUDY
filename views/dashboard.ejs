@@ -1,0 +1,8 @@
+<%- include('header') %>
+<h2>Welcome, <%= user.username %></h2>
+<p>Your role is <%= user.role %>.</p>
+<a href="/logout">Logout</a>
+<% if (user.role === 'admin') { %>
+  <p><a href="/admin">View Audit Logs</a></p>
+<% } %>
+<%- include('footer') %>
