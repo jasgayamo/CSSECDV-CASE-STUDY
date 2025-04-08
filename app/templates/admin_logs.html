@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Admin Logs{% endblock %}
+{% block content %}
+<h2>Application Logs</h2>
+<pre style="background: #f8f9fa; padding: 1rem; border: 1px solid #ccc; max-height: 400px; overflow-y: auto;">
+{% for line in logs %}{{ line }}{% endfor %}
+</pre>
+{% endblock %}

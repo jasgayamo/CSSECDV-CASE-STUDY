@@ -1,0 +1,422 @@
+[2025-04-08 08:51:22,674] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 08:51:22,674] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 08:51:42,578] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:51:42] "[33mGET /highlight_map/development HTTP/1.1[0m" 404 -
+[2025-04-08 08:53:38,041] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 08:53:38,041] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 08:53:42,584] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:53:42] "[33mGET /highlight_map/prevalence HTTP/1.1[0m" 404 -
+[2025-04-08 08:53:46,850] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+[2025-04-08 08:53:46,878] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:53:46] "[35m[1mGET / HTTP/1.1[0m" 500 -
+[2025-04-08 08:53:49,202] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+[2025-04-08 08:53:49,203] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:53:49] "[35m[1mGET / HTTP/1.1[0m" 500 -
+[2025-04-08 08:53:49,325] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:53:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-04-08 08:54:42,271] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:54:42] "[33mGET /highlight_map/deaths HTTP/1.1[0m" 404 -
+[2025-04-08 08:55:10,698] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\login_manager.py", line 347, in _load_user
+    raise Exception(
+Exception: Missing user_loader or request_loader. Refer to http://flask-login.readthedocs.io/#how-it-works for more info.
+[2025-04-08 08:55:10,700] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:55:10] "[35m[1mGET / HTTP/1.1[0m" 500 -
+[2025-04-08 08:55:11,679] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:55:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-04-08 08:55:42,583] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:55:42] "[33mGET /highlight_map/development HTTP/1.1[0m" 404 -
+[2025-04-08 08:56:42,273] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:56:42] "[33mGET /highlight_map/lung HTTP/1.1[0m" 404 -
+[2025-04-08 08:57:42,582] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:57:42] "[33mGET /highlight_map/prevalence HTTP/1.1[0m" 404 -
+[2025-04-08 08:58:42,269] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:58:42] "[33mGET /highlight_map/deaths HTTP/1.1[0m" 404 -
+[2025-04-08 08:59:42,582] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 08:59:42] "[33mGET /highlight_map/development HTTP/1.1[0m" 404 -
+[2025-04-08 09:00:42,275] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:00:42] "[33mGET /highlight_map/lung HTTP/1.1[0m" 404 -
+[2025-04-08 09:01:42,574] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:01:42] "[33mGET /highlight_map/prevalence HTTP/1.1[0m" 404 -
+[2025-04-08 09:02:42,275] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:02:42] "[33mGET /highlight_map/deaths HTTP/1.1[0m" 404 -
+[2025-04-08 09:03:42,571] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:03:42] "[33mGET /highlight_map/development HTTP/1.1[0m" 404 -
+[2025-04-08 09:04:27,676] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:04:27,676] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:04:39,236] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:04:39] "[31m[1mGET / HTTP/1.1[0m" 401 -
+[2025-04-08 09:04:42,574] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:04:42] "[33mGET /highlight_map/lung HTTP/1.1[0m" 404 -
+[2025-04-08 09:05:07,871] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:05:07] "[31m[1mGET / HTTP/1.1[0m" 401 -
+[2025-04-08 09:05:42,272] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:05:42] "[33mGET /highlight_map/prevalence HTTP/1.1[0m" 404 -
+[2025-04-08 09:06:42,573] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:06:42] "[33mGET /highlight_map/deaths HTTP/1.1[0m" 404 -
+[2025-04-08 09:06:57,900] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:06:57] "GET /login HTTP/1.1" 200 -
+[2025-04-08 09:07:23,822] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:07:23] "GET /register HTTP/1.1" 200 -
+[2025-04-08 09:07:42,276] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:07:42] "[33mGET /highlight_map/development HTTP/1.1[0m" 404 -
+[2025-04-08 09:07:48,712] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:07:48] "POST /register HTTP/1.1" 200 -
+[2025-04-08 09:08:03,051] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:08:03] "GET /login HTTP/1.1" 200 -
+[2025-04-08 09:08:11,772] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:08:11,775] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:08:11] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:08:42,569] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:08:42] "[33mGET /highlight_map/lung HTTP/1.1[0m" 404 -
+[2025-04-08 09:15:43,072] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:15:43,072] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:15:53,602] INFO in csrf: The CSRF token is missing.
+[2025-04-08 09:15:53,650] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:15:53] "POST /login HTTP/1.1" 200 -
+[2025-04-08 09:15:55,068] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:15:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-04-08 09:21:08,272] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:21:08,274] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:21:08] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:23:33,052] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:23:33,052] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:23:37,097] INFO in csrf: The CSRF token is missing.
+[2025-04-08 09:23:37,105] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:23:37] "POST /login HTTP/1.1" 200 -
+[2025-04-08 09:23:41,155] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:23:41,160] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:23:41] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:24:18,991] INFO in csrf: The CSRF token is missing.
+[2025-04-08 09:24:18,992] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:24:18] "POST /login HTTP/1.1" 200 -
+[2025-04-08 09:25:59,492] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:25:59,492] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:26:02,414] INFO in csrf: The CSRF token is missing.
+[2025-04-08 09:26:02,441] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:26:02] "POST /login HTTP/1.1" 200 -
+[2025-04-08 09:26:04,526] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:26:04] "GET /register HTTP/1.1" 200 -
+[2025-04-08 09:26:07,966] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:26:07] "GET /login HTTP/1.1" 200 -
+[2025-04-08 09:26:31,834] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:26:31,913] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:26:31] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:29:23,261] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:29:23,261] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:29:34,667] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:29:34,670] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:29:34] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:31:11,960] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:31:11,960] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:31:24,699] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:31:24,705] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:31:24] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:32:04,402] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:32:04,403] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:34:59,821] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\OneDrive\Documents\CSSECDV-CASE-STUDY\app\routes\auth.py", line 18, in login
+    user = User.query.filter_by(username=form.username.data).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2759, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2858, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2239, in _execute_internal
+    bind = self.get_bind(**bind_arguments)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\session.py", line 53, in get_bind
+    engines = self._db.engines
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\oldma\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_sqlalchemy\extension.py", line 690, in engines
+    raise RuntimeError(
+RuntimeError: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+[2025-04-08 09:34:59,824] INFO in _internal: 127.0.0.1 - - [08/Apr/2025 09:34:59] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+[2025-04-08 09:39:10,681] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-08 09:39:10,681] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-04-08 09:39:44,740] INFO in base: BEGIN (implicit)
+[2025-04-08 09:39:44,742] INFO in base: INSERT INTO user (username, email, password_hash, role, failed_logins, lockout_time, last_login) VALUES (?, ?, ?, ?, ?, ?, ?)
+[2025-04-08 09:39:44,743] INFO in base: [generated in 0.00052s] ('admin', 'admin@example.com', 'scrypt:32768:8:1$C6DCAbQqRprXzWVq$2441e50677f4827059ffbb451d24a50e2ba8c334654d6ca8f01a69f84e912765441678446ccc9343d0f78602be231b5d17c7a36469db4aa9665faebb357e710e', 'Admin', 0, None, None)
+[2025-04-08 09:39:44,744] INFO in base: ROLLBACK
+[2025-04-08 09:41:31,718] INFO in base: BEGIN (implicit)
+[2025-04-08 09:41:31,719] INFO in base: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name
+[2025-04-08 09:41:31,720] INFO in base: [raw sql] ()
+[2025-04-08 09:41:31,720] INFO in base: ROLLBACK
