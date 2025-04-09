@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['admin', 'manager', 'customer'], required: true },
   failedAttempts: { type: Number, default: 0 },
   isLocked: { type: Boolean, default: false },
+  lockoutUntil: { type: Date, default: null },  
   lastLogin: Date,
   lastFailedLogin: Date,
   passwordLastChanged: Date,
