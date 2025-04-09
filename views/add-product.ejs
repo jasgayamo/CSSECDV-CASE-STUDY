@@ -1,0 +1,14 @@
+<%- include('header') %>
+<h2>Add Product</h2>
+<form method="POST" action="/manager/products/add">
+  <input name="name" placeholder="Product Name" required>
+  <textarea name="description" placeholder="Description" required></textarea>
+  <input type="number" name="price" placeholder="Price" required>
+  <button type="submit">Add Product</button>
+</form>
+
+<!-- Add a button to redirect to the user's dashboard -->
+<a href="/dashboard"><button type="button">Go to Dashboard</button></a>
+
+<p style="color:red;"><%= error %></p>
+<%- include('footer') %>

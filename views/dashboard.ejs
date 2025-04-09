@@ -1,17 +1,29 @@
 <%- include('header') %>
+
 <h2>Welcome, <%= user.username %></h2>
 <p>Your role is <%= user.role %>.</p>
 
 <% if (lastLogin) { %>
-  <p>Your last successful login was on <%= lastLogin.toLocaleString() %>.</p>
+  <p>Your last successful login was on <%= new Date(lastLogin).toLocaleString() %>.</p>
 <% } %>
 
 <% if (lastFailedLogin) { %>
-  <p>Your last failed login attempt was on <%= lastFailedLogin.toLocaleString() %>.</p>
+  <p>Your last failed login attempt was on <%= new Date(lastFailedLogin).toLocaleString() %>.</p>
 <% } %>
 
 <a href="/logout">Logout</a>
+
 <% if (user.role === 'admin') { %>
   <p><a href="/admin">View Audit Logs</a></p>
 <% } %>
+
+<% if (user.role === 'manager') { %>
+  <p><a href="/manager/products">Manage Your Products</a></p>
+  <p><a href="/manager/products/add">Add New Product</a></p>
+<% } %>
+
+<% if (user.role === 'customer') { %>
+  <p><a href="/customer/products">Browse Products and Order</a></p>
+<% } %>
+
 <%- include('footer') %>

@@ -1,0 +1,18 @@
+<%- include('header') %>
+<h2>Available Products</h2>
+<ul>
+  <% products.forEach(p => { %>
+    <li>
+      <strong><%= p.name %></strong> by <%= p.createdBy.username %><br>
+      <%= p.description %> - ₱<%= p.price %>
+      <form method="POST" action="/customer/order/<%= p._id %>">
+        <button type="submit">Order</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<!-- Add a button to redirect to the user's dashboard -->
+<a href="/dashboard"><button type="button">Go to Dashboard</button></a>
+
+<%- include('footer') %>

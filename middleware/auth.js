@@ -6,7 +6,9 @@ function ensureAuth(req, res, next) {
   
   function ensureRole(role) {
     return (req, res, next) => {
-      if (req.session.user?.role !== role) return res.status(403).render('error', { message: 'Forbidden' });
+      if (req.session.user.role !== role) {
+        return res.status(403).send('Access denied');
+      }
       next();
     };
   }

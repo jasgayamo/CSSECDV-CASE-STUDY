@@ -7,10 +7,10 @@ const router = express.Router();
 router.get('/', ensureAuth, async (req, res) => {
   try {
     // Get the current user's information from the database
-    const user = await User.findById(req.session.user.id);
+    const user = await User.findById(req.session.user._id);
     
     res.render('dashboard', { 
-      user: req.session.user,
+      user,
       lastLogin: user.lastLogin,
       lastFailedLogin: user.lastFailedLogin
     });

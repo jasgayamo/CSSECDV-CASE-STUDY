@@ -1,0 +1,10 @@
+<%- include('header') %>
+<h2>Your Posted Products</h2>
+<ul>
+  <% products.forEach(p => { %>
+    <li><strong><%= p.name %></strong>: <%= p.description %> - ₱<%= p.price %></li>
+  <% }) %>
+</ul>
+<p><a href="/manager/products/add">Add New Product</a></p>
+<a href="/dashboard"><button type="button">Go to Dashboard</button></a>
+<%- include('footer') %>

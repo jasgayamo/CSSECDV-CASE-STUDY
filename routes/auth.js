@@ -92,7 +92,7 @@ router.post('/login', async (req, res) => {
   user.lockoutUntil = null;
   await user.save();
 
-  req.session.user = { id: user._id, role: user.role, username: user.username };
+  req.session.user = { _id: user._id, role: user.role, username: user.username };
 
   // Log successful login attempt
   logEvents(`SUCCESSFUL LOGIN for user: ${username}`);

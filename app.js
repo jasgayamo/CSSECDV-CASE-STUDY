@@ -9,6 +9,8 @@ const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
 const adminRoutes = require('./routes/admin');
 const passwordRoutes = require('./routes/password');
+const managerRoutes = require('./routes/manager');
+const customerRoutes = require('./routes/customer');
 const { logEvents } = require('./middleware/logger');
 
 const app = express();
@@ -41,6 +43,8 @@ app.use('/', authRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/admin', adminRoutes);
 app.use('/password', passwordRoutes);
+app.use('/manager', managerRoutes);
+app.use('/customer', customerRoutes);
 
 // Error Page
 app.use((req, res) => {
