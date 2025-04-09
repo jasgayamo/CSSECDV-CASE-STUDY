@@ -9,8 +9,11 @@ const userSchema = new mongoose.Schema({
   failedAttempts: { type: Number, default: 0 },
   isLocked: { type: Boolean, default: false },
   lastLogin: Date,
-  lastPasswordChange: Date,
-  passwordHistory: [String]
+  lastFailedLogin: Date,
+  passwordLastChanged: Date,
+  passwordHistory: [String],
+  securityQuestion: { type: String, required: true },
+  securityAnswer: { type: String, required: true }
 });
 
 userSchema.pre('save', async function (next) {
@@ -19,6 +22,9 @@ userSchema.pre('save', async function (next) {
     this.password = hash;
     this.passwordHistory.push(hash);
     this.lastPasswordChange = new Date();
+  }
+  if (this.isModified('securityAnswer')) {
+    this.securityAnswer = await bcrypt.hash(this.securityAnswer, 10);
   }
   next();
 });

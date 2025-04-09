@@ -3,6 +3,10 @@
 <form method="POST" action="/register">
   <input name="username" placeholder="Username" required>
   <input type="password" name="password" placeholder="Password" required>
+  <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+  <small>Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.</small>
+  <input name="securityQuestion" placeholder="Security Question (e.g. Name of first pet)" required>
+  <input name="securityAnswer" placeholder="Answer" required>
   <select name="role" required>
     <option value="customer">Customer</option>
     <option value="manager">Manager</option>
@@ -12,4 +16,5 @@
 </form>
 <p style="color:red;"><%= error %></p>
 <p><a href="/login">Already have an account? Login here.</a></p>
+
 <%- include('footer') %>

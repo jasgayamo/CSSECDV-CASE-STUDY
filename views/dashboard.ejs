@@ -1,6 +1,15 @@
 <%- include('header') %>
 <h2>Welcome, <%= user.username %></h2>
 <p>Your role is <%= user.role %>.</p>
+
+<% if (lastLogin) { %>
+  <p>Your last successful login was on <%= lastLogin.toLocaleString() %>.</p>
+<% } %>
+
+<% if (lastFailedLogin) { %>
+  <p>Your last failed login attempt was on <%= lastFailedLogin.toLocaleString() %>.</p>
+<% } %>
+
 <a href="/logout">Logout</a>
 <% if (user.role === 'admin') { %>
   <p><a href="/admin">View Audit Logs</a></p>

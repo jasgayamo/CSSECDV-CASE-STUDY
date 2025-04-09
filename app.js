@@ -8,8 +8,8 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
 const adminRoutes = require('./routes/admin');
+const passwordRoutes = require('./routes/password');
 const { logEvents } = require('./middleware/logger');
-
 
 const app = express();
 
@@ -36,11 +36,11 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 }
 }));
 
-
 // Routes
 app.use('/', authRoutes);
 app.use('/dashboard', dashboardRoutes);
 app.use('/admin', adminRoutes);
+app.use('/password', passwordRoutes);
 
 // Error Page
 app.use((req, res) => {
