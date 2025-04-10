@@ -1,14 +1,76 @@
 <%- include('header') %>
+
 <h2>Add Product</h2>
-<form method="POST" action="/manager/products/add">
+<form id="productForm" method="POST" action="/manager/products/add">
   <input name="name" placeholder="Product Name" required>
   <textarea name="description" placeholder="Description" required></textarea>
   <input type="number" name="price" placeholder="Price" required>
-  <button type="submit">Add Product</button>
+
+  <!-- Replace submit with modal trigger -->
+  <button type="button" onclick="showPasswordModal()">Add Product</button>
 </form>
 
-<!-- Add a button to redirect to the user's dashboard -->
+<!-- Redirect to dashboard -->
 <a href="/dashboard"><button type="button">Go to Dashboard</button></a>
 
 <p style="color:red;"><%= error %></p>
+
+<!-- Success/Error Message Alert Box -->
+<% if (message) { %>
+  <script>
+    alert("<%= message %>");
+  </script>
+<% } %>
+
+<!-- Floating Username + Password Modal -->
+<div id="passwordModal" style="display: none; position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+  <div style="background: white; padding: 20px; border-radius: 8px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.25);">
+    <h3>Confirm Credentials</h3>
+    <input type="text" id="confirmUsername" placeholder="Enter your username" required style="width: 100%; margin-bottom: 10px;">
+    <input type="password" id="confirmPassword" placeholder="Enter your password" required style="width: 100%; margin-bottom: 10px;">
+    <div style="display: flex; justify-content: space-between;">
+      <button onclick="submitProduct()">Confirm</button>
+      <button onclick="closePasswordModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+    function showPasswordModal() {
+      document.getElementById('passwordModal').style.display = 'flex';
+    }
+  
+    function closePasswordModal() {
+      document.getElementById('passwordModal').style.display = 'none';
+    }
+  
+    function submitProduct() {
+      const username = document.getElementById('confirmUsername').value.trim();
+      const password = document.getElementById('confirmPassword').value.trim();
+  
+      if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+      }
+  
+      const form = document.getElementById('productForm');
+  
+      const hiddenUsername = document.createElement('input');
+      hiddenUsername.type = 'hidden';
+      hiddenUsername.name = 'username';
+      hiddenUsername.value = username;
+  
+      const hiddenPassword = document.createElement('input');
+      hiddenPassword.type = 'hidden';
+      hiddenPassword.name = 'password';
+      hiddenPassword.value = password;
+  
+      form.appendChild(hiddenUsername);
+      form.appendChild(hiddenPassword);
+  
+      form.submit();
+    }
+</script>
+
 <%- include('footer') %>
