@@ -4,6 +4,7 @@ const { ensureAuth, ensureRole } = require('../middleware/auth');
 const { logEvents } = require('../middleware/logger');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const Order = require('../models/Order');
 const router = express.Router();
 
 // Display all products for the logged-in manager
@@ -16,6 +17,32 @@ router.get('/products', ensureAuth, ensureRole('manager'), async (req, res) => {
 router.get('/products/add', ensureAuth, ensureRole('manager'), (req, res) => {
   res.render('add-product', { error: null, message: null });
 });
+
+// Manager Route to View Orders for Their Products
+router.get('/orders', ensureAuth, ensureRole('manager'), async (req, res) => {
+  try {
+    // Fetch the products managed by the current user
+    const products = await Product.find({ createdBy: req.session.user._id });
+
+    // Fetch orders related to those products, populate product and customer info
+    const orders = await Order.find({ product: { $in: products.map(p => p._id) } })
+      .populate('product', 'name')
+      .populate('customer', 'username')
+      .sort({ createdAt: -1 });
+
+    // Log the order-fetching activity
+    logEvents(`MANAGER ORDER VIEWED - Username: ${req.session.user.username}, Orders fetched: ${orders.length}, Products involved: ${products.length}`);
+
+    // Render the orders page
+    res.render('manager-orders', { orders });
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).send('Error fetching orders');
+  }
+});
+
+
+
 
 // Handle the addition of a new product
 router.post('/products/add', ensureAuth, ensureRole('manager'), async (req, res) => {
@@ -172,6 +199,7 @@ router.post('/products/delete/:id', ensureAuth, ensureRole('manager'), async (re
     res.status(500).json({ success: false, message: 'Failed to delete product' });
   }
 });
+
 
 
 

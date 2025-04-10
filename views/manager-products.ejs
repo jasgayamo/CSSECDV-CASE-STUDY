@@ -1,4 +1,9 @@
 <%- include('header') %>
+
+<link rel="stylesheet" href="/css/manager.css">
+
+<div class="manager-container">
+
 <h2>Your Posted Products</h2>
 <ul id="productList">
   <% products.forEach(p => { %>
@@ -49,6 +54,8 @@
   </div>
 </div>
 
+
+</div>
 <%- include('footer') %>
 
 <script>
