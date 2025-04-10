@@ -41,6 +41,116 @@ router.get('/orders', ensureAuth, ensureRole('manager'), async (req, res) => {
   }
 });
 
+router.post('/products', ensureAuth, ensureRole('manager'), async (req, res) => {
+  const { username, password } = req.body;
+  const MAX_LOGIN_ATTEMPTS = 5;
+  const LOCKOUT_DURATION_MINUTES = 30;
+
+  try {
+    // Fetch the sessionUser (currently logged-in user)
+    const sessionUser = req.session.user;
+
+    if (!sessionUser) {
+      return res.render('dashboard', {
+        error: 'User session is invalid or expired. Please log in again.',
+        lastLogin: null,
+        lastFailedLogin: null,
+        user: null, // Explicitly pass null if there's no logged-in user
+      });
+    }
+
+    // Find the user in the database using sessionUser.username
+    const user = await User.findOne({ username: sessionUser.username });
+
+    if (!user) {
+      // Log the failed login attempt for non-existent user
+      logEvents(`FAILED LOGIN for non-existent user: ${username}`);
+      return res.render('dashboard', {
+        error: 'User not found in the database.',
+        lastLogin: null,
+        lastFailedLogin: null,
+        user: null, // Pass null if user is not found
+      });
+    }
+
+    // Check if account is locked but lockout period has expired
+    if (user.isLocked && user.lockoutUntil && user.lockoutUntil < new Date()) {
+      // Lockout period has expired, unlock the account
+      user.isLocked = false;
+      user.lockoutUntil = null;
+      user.failedAttempts = 0;
+      await user.save();
+      logEvents(`ACCOUNT UNLOCKED (time-based) for user: ${sessionUser.username}`);
+    }
+
+    // Check if account is still locked
+    if (user.isLocked) {
+      const remainingLockTime = user.lockoutUntil ? 
+        Math.ceil((user.lockoutUntil - new Date()) / (1000 * 60)) : 
+        LOCKOUT_DURATION_MINUTES;
+
+      return res.render('dashboard', {
+        error: `Account is locked. Please try again in ${remainingLockTime} minutes or contact support.`,
+        lastLogin: user.lastLogin,
+        lastFailedLogin: user.lastFailedLogin,
+        user: sessionUser, // Pass sessionUser as user
+      });
+    }
+
+    // Now check if the password is incorrect
+    if (!(await bcrypt.compare(password, user.password))) {
+      // Log the failed login attempt
+      logEvents(`FAILED LOGIN for user: ${sessionUser.username}`);
+
+      // Record the time of the failed login attempt
+      user.lastFailedLogin = new Date();
+      user.failedAttempts += 1;
+
+      // Lock account after MAX_LOGIN_ATTEMPTS failed attempts
+      if (user.failedAttempts >= MAX_LOGIN_ATTEMPTS) {
+        user.isLocked = true;
+        const lockoutUntil = new Date();
+        lockoutUntil.setMinutes(lockoutUntil.getMinutes() + LOCKOUT_DURATION_MINUTES);
+        user.lockoutUntil = lockoutUntil;
+
+        logEvents(`ACCOUNT LOCKED for user: ${sessionUser.username} until ${lockoutUntil}`);
+      }
+
+      await user.save();
+
+      return res.render('dashboard', {
+        error: 'Invalid username and/or password',
+        lastLogin: user.lastLogin,
+        lastFailedLogin: user.lastFailedLogin,
+        user: sessionUser, // Pass sessionUser as user
+      });
+    }
+
+    // On successful login, reset failed attempts and record last login time
+    user.failedAttempts = 0;
+    user.lastLogin = new Date();
+    user.isLocked = false;
+    user.lockoutUntil = null;
+    await user.save();
+
+    // Log successful login attempt
+    logEvents(`SUCCESSFUL LOGIN for user: ${username}`);
+
+    // Redirect to the manager orders page after successful login
+    req.session.user = { _id: user._id, role: user.role, username: user.username };
+    res.redirect('/manager/products');
+  } catch (err) {
+    console.error('Error in /orders login:', err);
+    res.render('dashboard', {
+      error: 'An error occurred during login. Please try again later.',
+      lastLogin: null,
+      lastFailedLogin: null,
+      user: null, // Pass null if there's an error
+    });
+  }
+});
+
+
 // Route to handle the login form submission from the modal
 router.post('/orders', ensureAuth, ensureRole('manager'), async (req, res) => {
   const { username, password } = req.body;

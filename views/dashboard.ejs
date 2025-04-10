@@ -4,7 +4,6 @@
 
 <div class="dashboard-container">
 
-
   <% if (error) { %> 
     <script>
       window.onload = function() {
@@ -13,112 +12,141 @@
     </script>
   <% } %>
   
-  
+  <h2>Welcome, <%= user.username %></h2>
+  <p>Your role is <%= user.role %>.</p>
 
-<h2>Welcome, <%= user.username %></h2>
-<p>Your role is <%= user.role %>.</p>
+  <% if (lastLogin) { %>
+    <p>Your last successful login was on <%= new Date(lastLogin).toLocaleString() %>.</p>
+  <% } %>
 
-<% if (lastLogin) { %>
-  <p>Your last successful login was on <%= new Date(lastLogin).toLocaleString() %>.</p>
-<% } %>
+  <% if (lastFailedLogin) { %>
+    <p>Your last failed login attempt was on <%= new Date(lastFailedLogin).toLocaleString() %>.</p>
+  <% } %>
 
-<% if (lastFailedLogin) { %>
-  <p>Your last failed login attempt was on <%= new Date(lastFailedLogin).toLocaleString() %>.</p>
-<% } %>
+  <a href="/logout">Logout</a>
 
-<a href="/logout">Logout</a>
+  <% if (user.role === 'admin') { %>
+    <div class="admin">
+      <p><a href="/admin">View Audit Logs</a></p>
+    </div>
+  <% } %>
 
-<% if (user.role === 'admin') { %>
-  <div class="admin">
-  <p><a href="/admin">View Audit Logs</a></p>
+  <% if (user.role === 'manager') { %>
+    <div class="manager">
+      <p><a href="/manager/products" >Manage Your Products</a></p>
+      <p><a href="/manager/products/add">Add New Product</a></p>
+      <p><a href="/manager/orders">View Orders for Your Products</a></p>
+    </div>
+  <% } %>
+
+  <% if (user.role === 'customer') { %>
+    <div class="customer">
+      <p><a href="/customer/products">Browse Products and Order</a></p>
+      <p><a href="/customer/orders">View My Orders</a></p>
+    </div>
+  <% } %>
+
 </div>
-<% } %>
 
-<% if (user.role === 'manager') { %>
-  <div class="manager">
-  <p><a href="/manager/products">Manage Your Products</a></p>
-  <p><a href="/manager/products/add">Add New Product</a></p>
-  <p><a href="/manager/orders">View Orders for Your Products</a></p>
-</div>
-<% } %>
-
-<% if (user.role === 'customer') { %>
-  <div class="customer">
-  <p><a href="/customer/products">Browse Products and Order</a></p>
-  <p><a href="/customer/orders">View My Orders</a></p>
-<% } %>
-
-</div>
-
-<div id="loginModal" class="modal">
+<!-- Modal for Viewing Orders -->
+<div id="loginModalOrders" class="modal">
   <div class="modal-content">
     <h4>Login to View Orders</h4>
-    <form id="loginForm" method="POST" action="/manager/orders">
+    <form id="loginFormOrders" method="POST" action="/manager/orders">
       <div>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="usernameOrders" name="username" required>
       </div>
       <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="passwordOrders" name="password" required>
       </div>
       <button type="submit">Login</button>
-      <button type="button" id="closeModal">Cancel</button>
+      <button type="button" id="closeModalOrders">Cancel</button>
     </form>
   </div>
 </div>
 
+<!-- Modal for Managing Products -->
+<div id="loginModalProducts" class="modal">
+  <div class="modal-content">
+    <h4>Login to Manage Your Products</h4>
+    <form id="loginFormProducts" method="POST" action="/manager/products">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="usernameProducts" name="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="passwordProducts" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+      <button type="button" id="closeModalProducts">Cancel</button>
+    </form>
+  </div>
+</div>
 
 <%- include('footer') %>
 
-<!-- Add JavaScript to trigger the modal -->
+<!-- Add JavaScript to trigger the modals -->
 <script>
+  // Trigger for the modal to view orders
   document.querySelector('a[href="/manager/orders"]').addEventListener('click', function (e) {
     e.preventDefault(); // Prevent the default link behavior
-    document.getElementById('loginModal').style.display = 'block'; // Show modal
+    document.getElementById('loginModalOrders').style.display = 'block'; // Show modal
   });
 
-  // Close modal
-  document.getElementById('closeModal').addEventListener('click', function () {
-    document.getElementById('loginModal').style.display = 'none';
+  // Trigger for the modal to manage products
+  document.querySelector('a[href="/manager/products"]').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent the default link behavior
+    document.getElementById('loginModalProducts').style.display = 'block'; // Show modal
+  });
+
+  // Close modal for orders
+  document.getElementById('closeModalOrders').addEventListener('click', function () {
+    document.getElementById('loginModalOrders').style.display = 'none';
+  });
+
+  // Close modal for products
+  document.getElementById('closeModalProducts').addEventListener('click', function () {
+    document.getElementById('loginModalProducts').style.display = 'none';
   });
 </script>
 
 <style>
   /* Modal Styles */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
 
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
 
-button:hover {
-  background-color: #45a049;
-}
-
+  button:hover {
+    background-color: #45a049;
+  }
 </style>
