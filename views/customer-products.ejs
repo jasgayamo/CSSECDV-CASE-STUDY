@@ -5,6 +5,17 @@
   <div style="color: red; margin-bottom: 10px;"><%= error %></div>
 <% } %>
 
+<% if (message) { %>
+  <div id="successModal" class="modal" style="display: block;">
+    <div class="modal-content">
+      <h4>Success</h4>
+      <p><%= message %></p>
+      <button onclick="closeSuccessModal()">OK</button>
+    </div>
+  </div>
+<% } %>
+
+
 <ul>
     <% products.forEach(p => { %>
         <li>
@@ -94,4 +105,14 @@
       closeModal();
     }
   }
+
+  function closeSuccessModal() {
+    document.getElementById('successModal').style.display = "none";
+    // Remove the message parameter from URL without reloading
+    const url = new URL(window.location.href);
+    url.searchParams.delete('message');
+    window.history.replaceState({}, document.title, url.toString());
+  }
+
+
 </script>

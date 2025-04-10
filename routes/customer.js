@@ -113,12 +113,29 @@ router.post('/order/:productId', ensureAuth, ensureRole('customer'), async (req,
     const order = await Order.create({ product: productId, customer: sessionUser._id });
     logEvents(`ORDER PLACED - Product: ${product.name} (ID: ${productId}) by ${sessionUser.username} (ID: ${sessionUser._id})`);
 
-    res.redirect('/customer/products');
+    res.redirect('/customer/products?message=Order placed successfully!');
   } catch (err) {
     console.error('Error placing order:', err);
     res.redirect('/customer/products?error=Order failed.');
   }
 });
+
+router.get('/orders', ensureAuth, ensureRole('customer'), async (req, res) => {
+  try {
+    const userId = req.session.user._id;
+
+    // Fetch all orders for the logged-in customer and populate product info
+    const orders = await Order.find({ customer: userId }).populate('product');
+    logEvents(`ORDERS VIEWED by ${req.session.user.username} (ID: ${userId})`);
+
+    res.render('customer-orders', { orders });
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    res.status(500).send('Internal server error');
+  }
+});
+
+
 
 
 

@@ -1,0 +1,19 @@
+<%- include('header') %>
+
+<h2>Your Orders</h2>
+
+<% if (orders.length === 0) { %>
+  <p>You haven't placed any orders yet.</p>
+<% } else { %>
+  <ul>
+    <% orders.forEach(order => { %>
+      <li>
+        <strong><%= order.product.name %></strong> - Ordered on <%= new Date(order.createdAt).toLocaleString() %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<a href="/customer/products">← Back to Products</a>
+
+<%- include('footer') %>
