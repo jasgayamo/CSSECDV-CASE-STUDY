@@ -1,5 +1,9 @@
 <%- include('header') %>
 
+<link rel="stylesheet" href="/css/dashboard.css">
+
+<div class="dashboard-container">
+
 <h2>Welcome, <%= user.username %></h2>
 <p>Your role is <%= user.role %>.</p>
 
@@ -14,17 +18,24 @@
 <a href="/logout">Logout</a>
 
 <% if (user.role === 'admin') { %>
+  <div class="admin">
   <p><a href="/admin">View Audit Logs</a></p>
+</div>
 <% } %>
 
 <% if (user.role === 'manager') { %>
+  <div class="manager">
   <p><a href="/manager/products">Manage Your Products</a></p>
   <p><a href="/manager/products/add">Add New Product</a></p>
+</div>
 <% } %>
 
 <% if (user.role === 'customer') { %>
+  <div class="customer">
   <p><a href="/customer/products">Browse Products and Order</a></p>
   <p><a href="/customer/orders">View My Orders</a></p>
 <% } %>
+
+</div>
 
 <%- include('footer') %>

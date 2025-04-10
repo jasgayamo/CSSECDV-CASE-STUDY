@@ -1,0 +1,48 @@
+body {
+    background: linear-gradient(135deg, #4bb89b, #7ddfa7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .admin-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  
+  .admin-container h2 {
+    margin-bottom: 30px;
+    color: #137b67;
+  }
+  
+  .admin-container pre {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+  
+  .admin-container a {
+    color: #137b67;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  .admin-container a:hover {
+    text-decoration: underline;
+  }
+  

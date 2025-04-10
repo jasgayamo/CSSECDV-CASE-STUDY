@@ -1,5 +1,9 @@
 <%- include('header') %>
 
+<link rel="stylesheet" href="/css/product.css">
+
+<div class="product-container">
+
 <h2>Add Product</h2>
 <form id="productForm" method="POST" action="/manager/products/add">
   <input name="name" placeholder="Product Name" required>
@@ -72,6 +76,7 @@
       form.submit();
     }
 </script>
+</div>
 
 <%- include('footer') %>
 

@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(135deg, #4bb89b, #7ddfa7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .dashboard-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+  }
+  
+  .dashboard-container h2 {
+    margin-bottom: 20px;
+    color: #137b67;
+  }
+  
+  .dashboard-container p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .dashboard-container a {
+    color: #137b67;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .dashboard-container a:hover {
+    text-decoration: underline;
+  }
+  
+  .dashboard-container small {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 12px;
+  }
+  
+  .dashboard-container .admin, .dashboard-container .manager, .dashboard-container .customer {
+    margin-top: 20px;
+  }
+  
