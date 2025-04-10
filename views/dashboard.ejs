@@ -4,6 +4,17 @@
 
 <div class="dashboard-container">
 
+
+  <% if (error) { %> 
+    <script>
+      window.onload = function() {
+        alert('<%= error %>'); // Show the error in an alert box
+      };
+    </script>
+  <% } %>
+  
+  
+
 <h2>Welcome, <%= user.username %></h2>
 <p>Your role is <%= user.role %>.</p>
 
@@ -39,4 +50,75 @@
 
 </div>
 
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h4>Login to View Orders</h4>
+    <form id="loginForm" method="POST" action="/manager/orders">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+      <button type="button" id="closeModal">Cancel</button>
+    </form>
+  </div>
+</div>
+
+
 <%- include('footer') %>
+
+<!-- Add JavaScript to trigger the modal -->
+<script>
+  document.querySelector('a[href="/manager/orders"]').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent the default link behavior
+    document.getElementById('loginModal').style.display = 'block'; // Show modal
+  });
+
+  // Close modal
+  document.getElementById('closeModal').addEventListener('click', function () {
+    document.getElementById('loginModal').style.display = 'none';
+  });
+</script>
+
+<style>
+  /* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+</style>

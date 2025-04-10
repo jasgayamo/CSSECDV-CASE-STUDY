@@ -101,7 +101,8 @@ router.post('/login', async (req, res) => {
   res.render('dashboard', { 
     user: req.session.user,
     lastLogin: user.lastLogin,
-    lastFailedLogin: user.lastFailedLogin
+    lastFailedLogin: user.lastFailedLogin,
+    error: ''
   });
 });
 

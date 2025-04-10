@@ -6,6 +6,14 @@
 
 <h2>Login</h2>
 
+<% if (error) { %>
+  <script>
+    window.onload = function() {
+      alert('<%= error %>'); // Show the error in an alert box
+    };
+  </script>
+<% } %>
+
 <form method="POST" action="/login">
   <input name="username" placeholder="Username" required>
   <input type="password" name="password" placeholder="Password" required>
