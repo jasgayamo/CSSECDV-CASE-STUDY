@@ -9,6 +9,20 @@
     <% orders.forEach(order => { %>
       <li>
         <strong><%= order.product.name %></strong> - Ordered on <%= new Date(order.createdAt).toLocaleString() %>
+        <button onclick="openModal('<%= order._id %>')">Delete Order</button>
+
+        <!-- Modal -->
+        <div id="modal-<%= order._id %>" class="modal" style="display: none;">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('<%= order._id %>')">&times;</span>
+            <h3>Confirm Delete</h3>
+            <form action="/customer/order/<%= order._id %>/delete" method="POST">
+              <input type="text" name="username" placeholder="Username" required>
+              <input type="password" name="password" placeholder="Password" required>
+              <button type="submit">Confirm Delete</button>
+            </form>
+          </div>
+        </div>
       </li>
     <% }) %>
   </ul>
@@ -17,3 +31,51 @@
 <a href="/customer/products">← Back to Products</a>
 
 <%- include('footer') %>
+
+<!-- Modal Styles and Script -->
+<style>
+  .modal {
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+  }
+
+  .close {
+    position: absolute;
+    top: 8px; right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  function openModal(orderId) {
+    document.getElementById('modal-' + orderId).style.display = 'flex';
+  }
+
+  function closeModal(orderId) {
+    document.getElementById('modal-' + orderId).style.display = 'none';
+  }
+
+  // Optional: Close modal if user clicks outside the modal content
+  window.onclick = function(event) {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  };
+</script>

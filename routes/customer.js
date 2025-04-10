@@ -135,6 +135,99 @@ router.get('/orders', ensureAuth, ensureRole('customer'), async (req, res) => {
   }
 });
 
+router.post('/order/:orderId/delete', ensureAuth, ensureRole('customer'), async (req, res) => {
+  const { orderId } = req.params;
+  const { username, password } = req.body;
+  const MAX_ATTEMPTS = 5;
+  const LOCKOUT_DURATION_MINUTES = 30;
+
+  try {
+    const sessionUser = await User.findById(req.session.user._id);
+    if (!sessionUser) {
+      return res.redirect('/customer/orders?error=Unauthorized.');
+    }
+
+    if (sessionUser.isLocked && sessionUser.lockoutUntil && sessionUser.lockoutUntil > new Date()) {
+      const remaining = Math.ceil((sessionUser.lockoutUntil - new Date()) / 60000);
+      return res.redirect(`/customer/orders?error=Account locked. Try again in ${remaining} minute(s).`);
+    }
+
+    if (sessionUser.username !== username) {
+      sessionUser.failedAttempts += 1;
+      sessionUser.lastFailedLogin = new Date();
+
+      if (sessionUser.failedAttempts >= MAX_ATTEMPTS) {
+        sessionUser.isLocked = true;
+        const lockoutUntil = new Date();
+        lockoutUntil.setMinutes(lockoutUntil.getMinutes() + LOCKOUT_DURATION_MINUTES);
+        sessionUser.lockoutUntil = lockoutUntil;
+
+        logEvents(`ACCOUNT LOCKED (username mismatch) during delete for user: ${sessionUser.username} until ${lockoutUntil}`);
+        await sessionUser.save();
+        req.session.destroy(() => {
+          logEvents(`AUTO-LOGOUT: Locked user (${sessionUser.username}) tried to delete order.`);
+          return res.redirect(`/customer/orders?error=Too many failed attempts. Account locked for ${LOCKOUT_DURATION_MINUTES} minutes.`);
+        });
+        return;
+      }
+
+      await sessionUser.save();
+      return res.redirect('/customer/orders?error=Invalid credentials. Order not deleted.');
+    }
+
+    const isMatch = await bcrypt.compare(password, sessionUser.password);
+    if (!isMatch) {
+      sessionUser.failedAttempts += 1;
+      sessionUser.lastFailedLogin = new Date();
+
+      if (sessionUser.failedAttempts >= MAX_ATTEMPTS) {
+        sessionUser.isLocked = true;
+        const lockoutUntil = new Date();
+        lockoutUntil.setMinutes(lockoutUntil.getMinutes() + LOCKOUT_DURATION_MINUTES);
+        sessionUser.lockoutUntil = lockoutUntil;
+
+        logEvents(`ACCOUNT LOCKED (password mismatch) during delete for user: ${sessionUser.username} until ${lockoutUntil}`);
+      }
+
+      await sessionUser.save();
+      return res.redirect('/customer/orders?error=Invalid credentials. Order not deleted.');
+    }
+
+    // Unlock if lock expired and credentials are good
+    if (sessionUser.isLocked && sessionUser.lockoutUntil < new Date()) {
+      sessionUser.isLocked = false;
+      sessionUser.lockoutUntil = null;
+      sessionUser.failedAttempts = 0;
+      await sessionUser.save();
+      logEvents(`ACCOUNT UNLOCKED (time-based) during delete: ${sessionUser.username}`);
+    }
+
+    const order = await Order.findById(orderId).populate('product');
+    if (!order) {
+      return res.redirect('/customer/orders?error=Order not found.');
+    }
+
+    if (order.customer.toString() !== sessionUser._id.toString()) {
+      return res.redirect('/customer/orders?error=Unauthorized action.');
+    }
+
+    await Order.findByIdAndDelete(orderId);
+    logEvents(`ORDER DELETED - Product: ${order.product.name} (ID: ${order.product._id}) by ${sessionUser.username} (ID: ${sessionUser._id})`);
+
+    // Reset lockout status after successful action
+    sessionUser.failedAttempts = 0;
+    sessionUser.isLocked = false;
+    sessionUser.lockoutUntil = null;
+    sessionUser.lastLogin = new Date();
+    await sessionUser.save();
+
+    return res.redirect('/customer/orders?message=Order deleted successfully.');
+  } catch (err) {
+    console.error('Error deleting order:', err);
+    return res.redirect('/customer/orders?error=Error deleting order.');
+  }
+});
+
 
 
 
