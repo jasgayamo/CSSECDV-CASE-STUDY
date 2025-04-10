@@ -148,28 +148,34 @@ router.post('/products/edit/:id', ensureAuth, ensureRole('manager'), async (req,
   }
 });
 
-
-
-
-// Delete product route
+// Handle the deletion of a product
 router.post('/products/delete/:id', ensureAuth, ensureRole('manager'), async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id); // Changed _id to id
+    const product = await Product.findById(req.params.id);
 
-    if (!product || product.createdBy.toString() !== req.session.user._id.toString()) {
-      return res.redirect('/manager/products');  // Redirecting to the manager-products page
+    if (!product) {
+      return res.status(404).json({ success: false, message: 'Product not found' });
     }
 
-    await product.remove();
+    if (product.createdBy.toString() !== req.session.user._id.toString()) {
+      return res.status(403).json({ success: false, message: 'User does not have permission' });
+    }
+
+    // Use deleteOne method instead of remove
+    await Product.deleteOne({ _id: req.params.id });
+
     logEvents(`PRODUCT DELETED - Name: ${product.name}, By: ${req.session.user.username} (ID: ${req.session.user._id})`);
 
-    res.json({ success: true, message: 'Product updated successfully' });
-    // Redirect to the manager-products page after deletion
+    res.json({ success: true, message: 'Product deleted successfully' });
   } catch (err) {
     console.error('Error deleting product:', err);
-    res.redirect('/manager/products');  // Redirect to the manager-products page on error
+    res.status(500).json({ success: false, message: 'Failed to delete product' });
   }
 });
+
+
+
+
 
 
 
