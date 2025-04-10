@@ -1,0 +1,125 @@
+body {
+    background: linear-gradient(135deg, #4bb89b, #7ddfa7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .customer-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  
+  .customer-container h2 {
+    margin-bottom: 30px;
+    color: #137b67;
+  }
+  
+  .customer-container ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .customer-container li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .customer-container li strong {
+    font-size: 16px;
+    color: #137b67;
+  }
+  
+  .customer-container button {
+    background-color: #137b67;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .customer-container button:hover {
+    background-color: #105c4d;
+  }
+  
+  .customer-container a {
+    color: #137b67;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  .customer-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .modal button {
+    margin-top: 10px;
+    background-color: #137b67;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .modal button:hover {
+    background-color: #105c4d;
+  }
+  
+  .modal input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modal input[type="password"], .modal input[type="text"] {
+    width: 100%;
+  }
+  
+  .modal label {
+    font-size: 14px;
+    color: #333;
+  }
+  
