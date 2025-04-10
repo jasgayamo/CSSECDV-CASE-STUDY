@@ -6,6 +6,12 @@
   <% } %>
 <% if (orders.length === 0) { %>
   <p>You haven't placed any orders yet.</p>
+
+  <% if (message) { %>
+    <p style="color: green;"><%= message %></p>
+    <script>openSuccessModal();</script>
+  <% } %>
+  
 <% } else { %>
   <ul>
     <% orders.forEach(order => { %>
