@@ -114,5 +114,11 @@
     window.history.replaceState({}, document.title, url.toString());
   }
 
+  window.onload = function() {
+    setTimeout(function() {
+      // Clear error and message from URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }, 3000);  // Optional: Wait for 3 seconds before clearing
+  };
 
 </script>

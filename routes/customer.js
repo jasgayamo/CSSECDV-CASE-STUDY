@@ -123,17 +123,22 @@ router.post('/order/:productId', ensureAuth, ensureRole('customer'), async (req,
 router.get('/orders', ensureAuth, ensureRole('customer'), async (req, res) => {
   try {
     const userId = req.session.user._id;
-
+    
     // Fetch all orders for the logged-in customer and populate product info
     const orders = await Order.find({ customer: userId }).populate('product');
     logEvents(`ORDERS VIEWED by ${req.session.user.username} (ID: ${userId})`);
 
-    res.render('customer-orders', { orders });
+    // Extract error and message from query string and pass them to the view
+    const { error, message } = req.query;
+    
+    // Pass orders, error, and message to the template
+    res.render('customer-orders', { orders, error, message });
   } catch (error) {
     console.error('Error fetching orders:', error);
     res.status(500).send('Internal server error');
   }
 });
+
 
 router.post('/order/:orderId/delete', ensureAuth, ensureRole('customer'), async (req, res) => {
   const { orderId } = req.params;

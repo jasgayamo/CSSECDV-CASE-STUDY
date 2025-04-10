@@ -8,3 +8,12 @@
 <p><a href="/manager/products/add">Add New Product</a></p>
 <a href="/dashboard"><button type="button">Go to Dashboard</button></a>
 <%- include('footer') %>
+
+<script>
+   window.onload = function() {
+    setTimeout(function() {
+      // Clear error and message from URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }, 3000);  // Optional: Wait for 3 seconds before clearing
+  };
+</script>
