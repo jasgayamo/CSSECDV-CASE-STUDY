@@ -27,6 +27,7 @@ router.post('/change', async (req, res) => {
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
   if (!passwordRegex.test(newPassword)) {
+    logEvents(`ERROR PASSWORD CHANGED for user: ${username}`);
     return res.render('change-password', {
       error: 'Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.'
     });
