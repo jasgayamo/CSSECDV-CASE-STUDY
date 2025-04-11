@@ -130,7 +130,10 @@ router.post('/register', async (req, res) => {
       return res.render('register', { error: 'Username already exists' });
     }
 
-    const user = new User({ username, password, role, securityQuestion, securityAnswer });
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const user = new User({ username, password: hashedPassword, role, securityQuestion, securityAnswer });
     await user.save();
     logEvents(`NEW USER REGISTERED: ${username}`);
     res.redirect('/login');
