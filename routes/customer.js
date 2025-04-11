@@ -92,10 +92,13 @@ router.post('/order/:productId', ensureAuth, ensureRole('customer'), async (req,
       }
 
       await sessionUser.save();
+      logEvents(`ORDER NOT PLACED - Product: ${product.name} (ID: ${productId}) by ${sessionUser.username} (ID: ${sessionUser._id})`);
       return res.redirect('/customer/products?error=Invalid credentials. Order not placed.');
+      
     }
 
     if (sessionUser.role !== 'customer') {
+      logEvents(`ORDER NOT PLACED - Product: ${product.name} (ID: ${productId}) by ${sessionUser.username} (ID: ${sessionUser._id})`);
       return res.redirect('/customer/products?error=Unauthorized: Only customers can place orders.');
     }
 
