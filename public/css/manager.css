@@ -67,4 +67,85 @@ body {
   .manager-container button:hover {
     background-color: #105c4d;
   }
+
+/* Modal Styles */
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    width: 400px;
+    position: relative;
+  }
+  
+  .modal-content h2 {
+    color: #137b67;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .modal-content button {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #aaa;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #333;
+  }
+  
+  #confirmDelete {
+    background-color: #137b67;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  #cancelDelete {
+    background-color: #ddd;
+    color: #333;
+    border: none;
+    padding: 10px 0;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
   

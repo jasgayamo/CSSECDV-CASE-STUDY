@@ -1,10 +1,15 @@
 <%- include('header') %>
 
+<link rel="stylesheet" href="/css/manager-orders.css">
+
+<div class="orders-container">
+
 <h2>Your Product Orders</h2>
 
 <% if (orders.length === 0) { %>
     <p>No orders for your products yet.</p>
   <% } else { %>
+
     <table>
       <thead>
         <tr>
@@ -14,6 +19,7 @@
           <th>Order Date</th>
         </tr>
       </thead>
+
       <tbody>
         <% orders.forEach(order => { %>
           <tr>
@@ -24,10 +30,12 @@
           </tr>
         <% }) %>
       </tbody>
+
     </table>
   <% } %>
   
   <a href="/dashboard"><button type="button">Go to Dashboard</button></a>
 
+</div>
 
 <%- include('footer') %>
